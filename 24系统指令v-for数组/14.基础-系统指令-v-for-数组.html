@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1.循环生成谁 就在谁的标签上写v-for -->
+        <!-- 2.item in items  (item,index) in items -->
+        <ul>
+            <li v-for="item in list">{{item}} </li>
+        </ul>
+        <!--  -->
+        <ul>
+            <li v-for="(item,index) in list">{{ item + ':' + (index + 1) }}</li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: ["顺义", "朝阳", "海淀", "昌平", "通州", "东城", "西城", "丰台"]
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

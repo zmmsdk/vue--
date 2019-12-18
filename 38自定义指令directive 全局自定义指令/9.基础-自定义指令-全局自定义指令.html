@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" v-abc=""> -->
+        <div v-abc="name + '123'"></div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 必须在Vue实例创建之前注册  Vue.directive(指令名称,指令对象)
+        Vue.directive("abc", {
+            // 指令的钩子函数    inserted( 当前指令作用的元素被创建之后 执行 inserted)   update  (指令对应的表达式数据发生变化之后执行)
+            inserted: function (dom, obj) {
+                dom.style.backgroundColor = 'pink'
+                dom.innerText = obj.value
+            }
+        })
+        Vue.directive("focus", {
+            inserted: function (dom) {
+                dom.focus()
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: '张三'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

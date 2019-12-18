@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">{{name}}
+
+<!-- 定义一个点击事件 -->
+<span class="span" @click = test()>点击事件</span>
+
+        <span :id= "name">12</span>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            //挂载视图
+            el: '#app',
+            // 填充插值表达式的内容
+            data: {
+                id:name,
+                name: '老王',
+                arr:[1, 2, 3]
+            },
+            // 定义相关的方法
+            methods: {
+                // test: function () { }
+                test() {
+                    this.test1();
+                },
+                test1() {
+                   this.arr.map( (item, index)=> {
+                        console.log(this)
+                        console.log(item, index)
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

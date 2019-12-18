@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ninty></ninty>
+        <grand-grand-child></grand-grand-child>
+    </div>
+
+
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component("grand-grand-child", {
+            template: `<div>我是grand-grand-child</div>`
+        })
+        // vue实例有的 组件都有
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            components: {
+                // 局部组件 components:{ key(组件名称): value(组件对象) }
+                "ninty": {
+                    // 组件内容
+                    template: `<div>
+                            <child></child>
+                            <grand-grand-child></grand-grand-child>
+
+                     <button @click="cutCount">-</button>
+                      <span>{{ count }}</span>
+                      <button @click="addCount">+</button>
+                </div>`,
+                    data: function () {
+                        return {
+                            // 响应式数据
+                            count: 0
+                        }
+                    }, methods: {
+                        addCount() {
+                            this.count++ // 指向 组件实例
+                        },
+                        cutCount() {
+                            // this.count > 0 ? this.count-- : null
+                            // this.count > 0 && this.count--
+                            // this.count && this.count--
+                            !this.count || this.count--
+                            // this.count--
+                        }
+                    },
+                    components: {
+                        "child": {
+                            template: `<div>
+                                    <grand-grand-child></grand-grand-child>
+
+                                    <grand-child />
+
+                                我是child组件</div>`,
+                            components: {
+                                "grand-child": {
+                                    template: `<div>我是grand-child组件
+                                            <grand-grand-child></grand-grand-child>
+
+                                        </div>`,
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

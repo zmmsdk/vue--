@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 1.在当前实例所管理的视图 或者 template中使用其他组件 =>  其他组件的标签
+        // 2.一旦形成组件嵌套  => 父子关系
+        Vue.component("parent", {
+            template: `<div>
+                我是parent
+                <child />
+                </div>`,
+
+        })
+        Vue.component("child", {
+            template: `<div>
+                我是child
+                <grand-child />
+                </div>`,
+            components: {
+                "grand-child": {
+                    template: `<div>我是grand-child</div>`
+                }
+            }
+        })
+        // vue实例也可以看做一个大组件
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        });
+        // Vue实例  => 嵌套 parent -> Vue(父) => parent(子)
+        // parent(父) =>child(子)
+        // child(父) => grand-child(子)
+    </script>
+</body>
+
+</html>

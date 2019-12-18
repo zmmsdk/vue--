@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 显示city -->
+        <p>{{ city }}</p>
+        <input type="text" v-model="city">
+        <ul>
+            <!-- v-for循环list -->
+            <li v-for="item in list">
+                <span>城市: {{ item.cityname }}</span>
+                <span>薪水: {{ item.money }}</span>
+
+            </li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                city: '北京', // 城市名称
+                list: [
+                    { cityname: '北京', money: 10000 },
+                    { cityname: '北京', money: 20000 },
+                    { cityname: '北京', money: 30000 }] // 数组
+            },
+            methods: {},
+            watch: {
+                // 监听data数据变化
+                city: function (newValue) {
+                    // 该函数 在city发生改变时触发
+                    // this指向vm实例
+                    // 数组map 回调函数 => 数组有多长 就执行多少次该回调函数
+                    // map返回的内容 会加入到新数组中
+                    this.list = this.list.map(function (item) {
+                        item.cityname = newValue
+                        return item
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+<!-- 
+     实现路径:city值发生改变时  生成新name的list
+
+​      1   实现 city的双向绑定  
+
+​        2  watch监听city的数据项改变 
+
+​        3  改变函数中实现 
+ -->
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            margin: 100px auto;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="changeImg">改变头像</button>
+        <!-- v-bind -->
+        <img :src="url" alt="">
+        <span :id="test">大家好,一个山东人 对你 失望透顶的最深切的体验=> 行了 你喝啤酒吧</span>
+        <p :id="id"></p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id: 'test',
+                src: 'http://pic37.nipic.com/20140113/8800276_184927469000_2.png',
+                test: 'test',
+                url: 'http://b-ssl.duitang.com/uploads/item/201704/10/20170410073535_HXVfJ.thumb.700_0.jpeg'
+            },
+            methods: {
+                changeImg() {
+                    this.url = 'http://pic1.zhimg.com/50/v2-bf96fb79c5290318bfb4b3f70c8f88e4_hd.jpg'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

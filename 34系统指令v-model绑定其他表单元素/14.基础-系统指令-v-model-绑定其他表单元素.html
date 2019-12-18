@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- input 双向绑定 -->
+        <p>{{ nameInput }}</p>
+        <input type="text" v-model="nameInput">
+        <!-- textarea -->
+        <p>{{nameTextArea}}</p>
+        <textarea name="" id="" cols="30" rows="10" v-model="nameTextArea"></textarea>
+        <!-- checkbox绑定单个变量 布尔值 -->
+        <p>{{ nameCheckbox }}</p>
+        <input type="checkbox" name="" id="" v-model="nameCheckbox">您必须同意无条件的接受我们欺负你
+        <!-- 多个的checkbox 绑定的是 数组 -->
+        <p>{{ nameCheckboxs }}</p>
+        <input type="checkbox" name="" id="" value="geda" v-model="nameCheckboxs">疙瘩汤
+        <input type="checkbox" name="" id="" value="leg" v-model="nameCheckboxs">鸡腿
+        <input type="checkbox" name="" id="" value="hundun" v-model="nameCheckboxs">馄饨
+        <input type="checkbox" name="" id="" value="egg" v-model="nameCheckboxs">蛋炒饭加蛋
+        <input type="checkbox" name="" id="" value="nuddle" v-model="nameCheckboxs">油泼面
+        <!-- radio的双向同步 -->
+        <p>{{ nameRadio }}</p>
+        <input type="radio" value='mac' id="" v-model="nameRadio">金拱门
+        <input type="radio" value="kfc" id="" v-model="nameRadio">肯德基
+        <input type="radio" value="bsk" id="" v-model="nameRadio">必胜客
+        <input type="radio" value="subway" id="" v-model="nameRadio">赛百味
+        <!-- select 双向同步 -->
+        <p>{{ nameSelect }}</p>
+        <select name="" id="" v-model="nameSelect">
+            <option value=""></option>
+            <option value="apple">苹果</option>
+            <option value="banana">香蕉</option>
+            <option value="orange">橘子</option>
+        </select>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                nameInput: 'input值',
+                nameTextArea: 'textarea值',
+                nameCheckbox: false, // 布尔值 单个checkbox
+                nameCheckboxs: ["leg", "nuddle"], // 多个的checkbox绑定的就是一个数组
+                nameRadio: 'subway',
+                nameSelect: 'apple'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
+<!-- 
+1. 实例化一个Vue实例
+2. input 绑定 属性 nameInput,实现input同步
+3. textarea 绑定 属性 nameTextArea 实现textarea同步 
+4. checkbox 绑定一个属性 nameCheckbox 实现 checkbox同步   
+5. 多个 checkbox绑定同一个属性 nameCheckboxs 实现 checkbox同步           北京 上海 天津
+6. radio 绑定属性 nameRadio 实现同步  男 女 
+7. select  绑定属性 nameSelect 实现同步  北京 上海 天津 
+ -->

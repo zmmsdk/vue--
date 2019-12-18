@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <p>{{ count }}</p>
+        <p>{{  showMessage}}</p>
+        <p>{{list}}</p>
+        <p>{{ person }}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: '黄金跌了',
+                count: 1,
+                showMessage: true,
+                list: [1, 2, 3],
+                person: {
+                    age: '22岁',
+                    money: -2000,
+                    merry: '未婚'
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

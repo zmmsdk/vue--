@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <button @click="test()">点击事件</button>
+    <ul>
+        <!-- 2.在循环项调价<li v-for="(每一项,每一项的下标) in 数组名称":key="每一项的下标" >{{ 数组中的每一项 }}</li>-->
+        <li v-for="(item,index) in list" :key="index">{{ item.name }}</li>
+    </ul>
+    <div>{{info}}</div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./axios.min.js"></script>
+    <script>
+     
+
+
+
+        var vm = new Vue({
+
+            el: '#app',
+            data() {
+                return {
+                    info: null
+                }
+            },
+            methods: {
+                // test() {
+                //     alert(this.list)
+                // },
+            },
+            mounted() {
+                axios
+                    .get('http://localhost:8000/admin/category_search')
+                    .then(res => (this.info = res.data))
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>

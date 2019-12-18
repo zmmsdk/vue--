@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ foodname }}</p>
+        <input type="text" v-model="foodname">
+        <!-- 1.定义传递的属性 => 给谁传就在谁的标签上写属性 -->
+        <parent :name="foodname"></parent>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 注册一个全局组件
+        Vue.component("parent", {
+            // 2. 接收属性 props => 字符串数组 =>["定义的属性名称"]
+            props: ["name"],
+            template: `<div>父组件传给parent的值
+                   <span style="color:red; font-weight:bold">{{ name }}</span>
+                   <child :foodname="name" />
+                 </div>`
+            
+            // 3.Vue实例代理了data中所有属性方法 计算属性 还代理了所有的props属性  {{ name }}
+        })
+        Vue.component("child", {
+            template: `<div>parent组件传给child的值
+                   <span style="color:blue; font-weight:bold">{{foodname   }}</span>
+                   <grand-child :name="foodname" />
+                 </div>`,
+            props: ["foodname"]
+        })
+
+        Vue.component("grand-child", {
+            template: `<div>child组件传给grand-child的值
+                   <span style="color:green; font-weight:bold">{{ name }}</span>
+                 </div>`,
+            props: ["name"]
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                foodname: '烤鸭'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

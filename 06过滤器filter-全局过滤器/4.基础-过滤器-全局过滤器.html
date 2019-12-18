@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ name |  toUpper}}</p>
+        <p>{{ name | toFirstUpper }}</p>
+        <input type="text" v-model="name">
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 1.在Vue实例创建之前 去注册全局过滤器  Vue.filter(名称,过滤器函数)
+        // 2.注册全局过滤器在script标签下注册
+        Vue.filter("toUpper", function (value) {
+            // 过滤器必须有返回值
+            return value.toUpperCase()
+        })
+        Vue.filter("toFirstUpper", function (value) {
+            return value.charAt(0).toUpperCase() + value.substring(1)
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'abc'
+            },
+            methods: {}
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用组件 => 直接写组件的标签即可 -->
+        <ninty></ninty>
+        <ninty></ninty>
+        <ninty></ninty>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 1.注册全局组件 主要在Vue实例创建之前  Vue.component(组件名称, 组件对象)
+        // 2.注册全局组件要在script标签下
+        // 3.组件名 全小写 abc(单词)  abc-d(双词)
+        Vue.component("ninty", {
+            // 组件内容
+            template: `<div>
+                     <button @click="cutCount">-</button>
+                      <span>{{ count }}</span>
+                      <button @click="addCount">+</button>
+                </div>`,
+            data: function () {
+                return {
+                    // 响应式数据
+                    count: 0
+                }
+            }, methods: {
+                addCount() {
+                    this.count++ // 指向 组件实例
+                },
+                cutCount() {
+                    // this.count > 0 ? this.count-- : null
+                    // this.count > 0 && this.count--
+                    // this.count && this.count--
+                    !this.count || this.count--
+                    // this.count--
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

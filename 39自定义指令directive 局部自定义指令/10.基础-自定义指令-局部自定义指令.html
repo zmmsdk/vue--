@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // 局部自定义指令  注册的位置 是 实例的选项上
+        // el/data/methods/filters/directives
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // 自定义指令和其他实例选项同级
+            directives: {
+                focus: {
+                    inserted: function (dom) {
+                        dom.focus()
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

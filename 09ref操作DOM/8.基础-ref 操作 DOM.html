@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1. ref属性获取dom元素 可以像原生那样操作dom进而改变html结构 -->
+    <div id="app">
+
+        <input type="text" ref="myInput">
+        <button @click="getInput">获取input的值</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                getInput() {
+                    // this vm 
+                    this.$refs.myInput.style.backgroundColor = 'pink'
+                    this.$refs.myInput.style.color = 'blue'
+                    this.$refs.myInput.focus();
+                    alert(this.$refs.myInput.value)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 容器必须有 -->
+        <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+        var objA = {
+            template: `<div>
+            我是A,我要去B 
+            <button @click="goB">我要到B页面</button>
+            </div>`,
+            methods: {
+                goB() {
+                    // this.$router
+                    this.$router.push("/B")
+                    // this.$router.push({ path: '/B' })
+                    // router.push('/B')
+                }
+            }
+        }
+        var objB = {
+            template: `<div>我是B
+                <button @click="goC">我要到C页面</button>
+
+            </div>`
+            ,
+            methods: {
+                goC() {
+                    // this.$router
+                    this.$router.replace("/C")
+                    // this.$router.push({ path: '/B' })
+                    // router.push('/B')
+                }
+            }
+        }
+        var objC = {
+            template: `<div>
+               我是C   
+               <button @click="goD">我要到D页面</button>
+               </div>`  ,
+            methods: {
+                goD() {
+                    // this.$router
+                    this.$router.push("/D")
+                    // this.$router.push({ path: '/B' })
+                    // router.push('/B')
+                }
+            }
+        }
+        var objD = {
+            template: `<div>我是D
+                <button @click="goA">我要到A页面</button>
+
+            </div>`
+            ,
+            methods: {
+                goA() {
+                    // this.$router
+                    this.$router.go(-2)
+                    // this.$router.push({ path: '/B' })
+                    // router.push('/B')
+                }
+            }
+        }
+
+        var router = new VueRouter({
+            routes: [
+                { path: '/', redirect: '/A' },
+                { path: "/A", component: objA },
+                { path: "/B", component: objB },
+                { path: "/C", component: objC },
+                { path: "/D", component: objD }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router
+        });
+    </script>
+</body>
+
+<!-- 
+    1. 实例化一个导航路由
+2. 四个页面为A,B,C,D 
+3. A页面中有一个按钮，点击跳到B页面
+4. B页面有一个按钮，点击跳转到C页面，但是**`不追加历史纪录`**
+5. C页面有一个按钮，点击跳到D页面，
+6. D页面有一个按钮，点击直接回到A页面，而且页面**`不能再进行返回`**(之前的回退记录)
+ -->
+
+</html>

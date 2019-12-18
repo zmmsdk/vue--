@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <p>方法:{{ reverseName() }}</p>
+        <p>方法:{{ reverseName() }}</p>
+        <p>方法:{{ reverseName() }}</p>
+        <p>方法:{{ reverseName() }}</p>
+        <p>方法:{{ reverseName() }}</p> -->
+        <p>计算属性:{{ reverse }}</p>
+        <p>计算属性:{{ reverse }}</p>
+        <p>计算属性:{{ reverse }}</p>
+        <p>计算属性:{{ reverse }}</p>
+        <p>计算属性:{{ reverse }}</p>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: '今天晚上吃什么'
+            },
+            methods: {
+                reverseName() {
+                    // this vm
+                    console.log("我执行了方法")
+                    return this.name.split("").reverse().join("")
+                }
+            },
+            computed: {
+                // 1.把插值表达式中的方法放在计算熟悉中比放在methods更好  
+                // 2. 计算属性下不能有异步请求也就是计算属性下不能发ajax
+                // 3. 如果获得的数据不是需要的格式  就要用到计算属性
+                reverse: function () {
+                    // this指向vm实例
+                    console.log("我执行了计算属性")
+                    // 不能有异步请求 ajax(succss:)
+                    // setTimeout(function () {
+                    //     return 1
+                    // }, 1000)
+                  
+                    return this.name.split("").reverse().join("")
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

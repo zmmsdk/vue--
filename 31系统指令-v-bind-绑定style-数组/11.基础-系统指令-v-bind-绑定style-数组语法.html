@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind:style="[对象1,对象2...]" -->
+        <div :style="[style2,style1]" style="color:blue;font-size:12px;">
+            过年大家喜欢吃饺子
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                style1: {
+                    fontSize: '20px'
+                },
+                style2: {
+                    fontSize: '40px'
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

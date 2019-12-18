@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-text="dirName">内容:</p>
+        <p>内容: {{ expName }}</p>
+        <!-- v-html -->
+        <div v-text="content"></div>
+        <div v-html="content"></div>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                dirName: '指令文本',
+                expName: '插值表达式文本',
+                content: `<div style='color:blue; font-weight:bold'>过年我们要吃年夜饭</div>`
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

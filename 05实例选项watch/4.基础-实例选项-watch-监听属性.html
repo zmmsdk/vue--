@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 计算属性和监听属性都是  处理data下的数据   计算属性是同步的监听属性是异步的   计算属性和监听属性不能同时用在同一属性上 -->
+    <div id="app">
+        <p>{{foodname  }}</p>
+        <input type="text" v-model="foodname" />
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // watch选项
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                foodname: '担担面'
+            },
+            methods: {},
+            watch: {
+                // 监听谁就写谁的名字
+                foodname: function (newValue, oldValue) {
+                    //  this 执行vm实例对象：指的在this就是当前实例对象
+
+                    console.log(newValue + '----' + oldValue)
+
+                }
+            }  // watch和 其他选项是同级的
+        });
+    </script>
+</body>
+
+</html>

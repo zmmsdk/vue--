@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 传递参数 -->
+        <router-link to="/mobile/华为/main/6999">华为</router-link>
+        <router-link to="/mobile/小米/main/1999">小米</router-link>
+        <router-link to="/mobile/三星/main/7999">三星</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+        // 声明一个组件对象
+        var obj = {
+            template: `<div>我最喜欢这个{{ $route.params.name + '--' + $route.params.money }} 手机品牌</div>`
+        }
+        var router = new VueRouter({
+            // 给路由规则配置动态参数
+            routes: [{ path: '/mobile/:name/main/:money', component: obj }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router
+        });
+    </script>
+</body>
+
+</html>

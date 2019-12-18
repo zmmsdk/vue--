@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind 绑定style 对象 v-bind:style={ css属性名: 属性值 } -->
+        <div :style="{fontSize,fontWeight:400}" style="font-size:40px;color:red">
+            Vue基础第二天,大家feel还凑合
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                fontSize: '20px'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

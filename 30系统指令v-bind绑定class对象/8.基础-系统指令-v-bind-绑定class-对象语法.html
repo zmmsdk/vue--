@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .default {
+            width: 400px;
+            height: 400px;
+            font-size: 40px;
+        }
+
+        .red {
+            color: red
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .sky {
+            border: 4px solid skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="openRed">开关Red</button>
+        <button @click="openPink">开关Pink</button>
+        <button @click="openSky">开关Sky</button>
+        <!-- v-bind 绑定class对象语法  :class="{class名称:布尔值}" -->
+        <div class='default' :class="{red:isRed,pink: isPink, sky:isSky}">
+            还有一个月就放假了,还有一个半月就开学了
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isRed: false,
+                isSky: false,
+                isPink: false
+            },
+            methods: {
+                openRed() {
+                    this.isRed = !this.isRed
+                },
+                openPink() {
+                    this.isPink = !this.isPink
+
+                },
+                openSky() {
+                    this.isSky = !this.isSky
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

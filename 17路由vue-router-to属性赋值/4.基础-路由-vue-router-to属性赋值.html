@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 纯字符串 -->
+        <router-link to="/bj">北京</router-link>
+        <!-- 变量 -->
+        <router-link :to="path">北京(变量)</router-link>
+        <!-- 对象 path -->
+        <router-link :to="{ path:'/bj'}">北京(对象path)</router-link>
+        <!-- 对象 name -->
+        <router-link :to="{ name:'abc'}">北京(对象name)</router-link>
+
+        <router-link to="/sh">上海</router-link>
+        <router-link to="/tj">天津</router-link>
+
+        <router-link to="/sleep/甲同学">甲同学</router-link>
+
+        <router-link :to="{ path: '/sleep/乙同学' }">乙同学</router-link>
+        <router-link :to="{ name: 'index',params: { student: '丙同学' }  }">丙同学</router-link>
+
+        <router-view></router-view>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <script>
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/sleep/:student',
+                    name: 'index',
+                    component: {
+                        template: `<div>今天是12月13号,大家打瞌睡打的很厉害,其中就有 {{ $route.params.student }}</div>`
+                    }
+                },
+                {
+                    name: 'abc',
+                    path: '/bj',
+                    component: {
+                        template: `<div>北京</div>`
+                    }
+                }, {
+                    path: '/sh',
+                    component: {
+                        template: `<div>上海</div>`
+                    }
+                }, {
+                    path: '/tj',
+                    component: {
+                        template: `<div>天津</div>`
+                    }
+                }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                path: '/bj'
+            },
+            methods: {},
+            router
+        });
+    </script>
+</body>
+
+</html>
